@@ -251,6 +251,8 @@ class MyClient(discord.Client):
                     users[str(user.id)] = {}
                     users[str(user.id)]["wallet"] = 0
                     users[str(user.id)]["bank"] = 0
+                    #HIERZU: Entweder 1 und 0 speichern fuer reset um mitternacht, ODER:
+                    #Die Zeit speichern und nur nach 6h oder so erlauben, den timer zu ersetzen
                     users[str(user.id)]["paid"] = 0
 
                 # users = await get_bank_data()
@@ -261,6 +263,7 @@ class MyClient(discord.Client):
             # async def store_bank_data():
 
             async def payday(user):
+                #payday muss limitert werden, siehe oben
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
