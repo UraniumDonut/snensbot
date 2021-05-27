@@ -265,6 +265,7 @@ class MyClient(discord.Client):
             if mes[1] == "balance":
                     #and mess[2] == " ":
                 await message.channel.send("bruh")
+                await message.channel.send(message.author.id)
                 await balance(message.author)
 
     #Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
