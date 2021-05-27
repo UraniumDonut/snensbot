@@ -261,7 +261,9 @@ class MyClient(discord.Client):
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
 
-            if mess[1] == "mathe" and mess[2] == " ":
+
+            if mes[1] == "balance":
+                    #and mess[2] == " ":
                 await message.channel.send("bruh")
                 await balance(message.author)
 
