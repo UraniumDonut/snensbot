@@ -205,6 +205,65 @@ class MyClient(discord.Client):
         if message.content.startswith("!test"):
             await message.channel.send("https://cdn.discordapp.com/attachments/839789266754076722/845666202709655573/augenkrankheiten-sehschwaechen-simulation-beispielbild-katzenbaby.png")
 
+        #economy part
+        if message.content.startswith("!e"):
+
+            mes = message.content.split(" ")
+            try:
+                zusatz = mes[2]
+            except IndexError:
+                zusatz = " "
+            mess = [mes[0].lower(), mes[1].lower(), zusatz.lower()]
+            print(mes)
+            print(mess)
+
+            # Balance
+            await message.channel.send("Economy wurde gecalled")
+            async def balance(self):
+                await open_account(message.author)
+                user = message.author
+                users = await get_bank_data()
+                wallet_amt = users[str(message.author.id)]["wallet"]
+                bank_amt = users[str(message.author.id)]["bank"]
+
+                em = discord.Embed(title= f"{message.author.name}'s balance", color = 39321 )
+                em.add_field(name = "Wallet Balance", value = wallet_amt)
+                em.add_field(name="Bank Balance", value=bank_amt)
+                await message.channel.send(embed = em)
+            # opens Account
+            async def open_account(user):
+                users = await get_bank_data()
+
+
+
+                if str(user.id) in users:
+                    return False
+                else:
+                    users[str(user.id)] = {}
+                    users[str(user.id)]["wallet"] = 0
+                    users[str(user.id)]["bank"] = 0
+
+                #users = await get_bank_data()
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+                return True
+            async def get_bank_data():
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+            #async def store_bank_data():
+
+            async def beg(user):
+                await open_account(message.author)
+                users = await get_bank_data()
+                earnings = random.randrange(101)
+                await message.channel.send(f"Someone gave you {earnings} coins")
+                users[str(user.id)]["wallet"] += earnings
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+            if message.content.startswith("!balance"):
+                await message.channel.send("bruh")
+                await balance(message.author)
+
     #Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
         if(str(payload.emoji) == "💩"):
