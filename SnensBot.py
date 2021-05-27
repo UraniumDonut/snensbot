@@ -225,8 +225,6 @@ class MyClient(discord.Client):
             except IndexError:
                 zusatz = " "
             mess = [mes[0].lower(), mes[1].lower(), zusatz.lower()]
-            print(mes)
-            print(mess)
 
             # Balance
 
@@ -238,8 +236,8 @@ class MyClient(discord.Client):
                 wallet_amt = users[str(message.author.id)]["wallet"]
                 bank_amt = users[str(message.author.id)]["bank"]
 
-                em = discord.Embed(title=f"{message.author.name}'s balance", color=39321)
-                em.add_field(name="Wallet Balance", value=wallet_amt)
+                em = discord.Embed(title=f"{message.author.name}'s cash", color=39321)
+                em.add_field(name="Geldbeutel Balance", value=wallet_amt)
                 em.add_field(name="Bank Balance", value=bank_amt)
                 await message.channel.send(embed=em)
 
@@ -267,7 +265,7 @@ class MyClient(discord.Client):
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
                 earnings = random.randrange(50)
-                await message.channel.send(f"Someone gave you {earnings} coins")
+                await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
                 users[str(user.id)]["wallet"] += earnings
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
