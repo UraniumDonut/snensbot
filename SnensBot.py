@@ -10,7 +10,11 @@ print(path)
 os.chdir(path)
 #chdir passt sich an, den String Path ändern, wenn du was machen willst
 
-
+#Helper functions
+async def get_bank_data(self):
+    with open("mainbank.json", "r") as f:
+        users = json.load(f)
+    return users
 
 class MyClient(discord.Client):
 
@@ -20,6 +24,11 @@ class MyClient(discord.Client):
 
     #Wenn Nachricht gepostet wird
     async def on_message(self, message):
+
+        # reagiert nicht auf eigene Botnachrichten
+        if message.author == client.user:
+            return
+
         #Fächer Embeds
         async def etechnik():
             embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
@@ -90,9 +99,7 @@ class MyClient(discord.Client):
                              url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3A56aadede9c1b426bbea1b146cd349468%40thread.tacv2%2FAllgemein%3FgroupId%3D0f474a03-379f-4a14-9966-1ef19b5f9a45%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=channel&deeplinkId=983cbd58-f252-4c46-9506-f76c0ca8da0e&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")
 
             await message.channel.send(embed=embed_et_t)
-        #reagiert nicht auf eigene Botnachrichten
-        if message.author == client.user:
-            return
+
         #Gibt die Fächerembeds aus, Wenn !Fach "spezielles Fach" eingegeben wird
         if message.content.startswith("!Fach"):
             mes = message.content.split(" ")
@@ -196,7 +203,6 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
             await message.channel.send("https://cdn.discordapp.com/attachments/839789266754076722/845666202709655573/augenkrankheiten-sehschwaechen-simulation-beispielbild-katzenbaby.png")
-
 
     #Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
