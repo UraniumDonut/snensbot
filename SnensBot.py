@@ -11,7 +11,7 @@ class MyClient(discord.Client):
     #Einloggen
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
-        channel = client.get_channel(12324234183172)
+        channel = client.get_channel(837716949240643634)
         await channel.send('Bin stets zu Ihren Diensten')
         #await message.channel.send("Bin stets zu Ihren Diensten")
     #Wenn Nachricht gepostet wird
