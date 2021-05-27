@@ -16,6 +16,7 @@ async def get_bank_data(self):
         users = json.load(f)
     return users
 
+
 class MyClient(discord.Client):
 
     #Einloggen
