@@ -247,8 +247,6 @@ class MyClient(discord.Client):
             async def open_account(user):
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
-                with open("mainbank.json", "r") as f:
-                    users = json.load(f)
                 if str(user.id) in users:
                     return False
                 else:
@@ -266,7 +264,8 @@ class MyClient(discord.Client):
 
             async def payday(user):
                 await open_account(message.author)
-                users = await get_bank_data()
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
                 earnings = random.randrange(50)
                 await message.channel.send(f"Someone gave you {earnings} coins")
                 users[str(user.id)]["wallet"] += earnings
@@ -278,7 +277,7 @@ class MyClient(discord.Client):
             elif mes[1] == "balance":
                 await balance(message.author)
             elif mes[1] == "payday":
-                await payday()
+                await payday(message.author)
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
