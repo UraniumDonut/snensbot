@@ -149,7 +149,7 @@ class MyClient(discord.Client):
             print(nachricht_zeit)
             jetzt = datetime.today().replace(second=0, microsecond=0)
             print(jetzt)
-            if (nachricht_zeit == jetzt):
+            if nachricht_zeit == jetzt:
                 zeit = nachricht_zeit
                 stunde = zeit.hour
                 minute = zeit.minute
@@ -159,45 +159,45 @@ class MyClient(discord.Client):
 
                 # Montag
                 if (zeit.weekday() == 0):
-                    if (stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30):  # erste Stunde
+                    if stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30:  # erste Stunde
                         await message.channel.send("Wir haben jetzt zum Glück frei ")
-                    if (stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15):  # zweite Stunde
+                    if stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15:  # zweite Stunde
                         await etechnik()
-                    if (stunde == 11 and minute >= 15 or stunde == 12):  # dritte Stunde
+                    if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await physik()
-                    if (stunde == 14 or stunde == 15 and minute <= 30):
+                    if stunde == 14 or stunde == 15 and minute <= 30:
                         await mathe_uebung()
                 # Dienstag
-                elif (zeit.weekday() == 1):
-                    if (stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30):  # erste Stunde
+                elif zeit.weekday() == 1:
+                    if stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30:  # erste Stunde
                         await mathe()
-                    if (stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15):  # zweite Stunde
+                    if stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15:  # zweite Stunde
                         await etechnik()
-                    if (stunde == 11 and minute >= 15 or stunde == 12):  # dritte Stunde
+                    if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await et_uebung()
                 # Mittwoch
-                elif (zeit.weekday() == 2):
-                    if (stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30):  # erste Stunde
+                elif zeit.weekday() == 2:
+                    if stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30:  # erste Stunde
                         await mathe_tutorium()
-                    if (stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15):  # zweite Stunde
+                    if stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15:  # zweite Stunde
                         await mathe()
-                    if (stunde == 11 and minute >= 15 or stunde == 12):  # dritte Stunde
+                    if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await message.channel.send("FREIIIIIIIII!")
                 # Donnerstag
-                elif (zeit.weekday() == 3):
-                    if (stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30):  # erste Stunde
+                elif zeit.weekday() == 3:
+                    if stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30:  # erste Stunde
                         await mathe()
-                    if (stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15):  # zweite Stunde
+                    if stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15:  # zweite Stunde
                         await informatik1()
-                    if (stunde == 11 and minute >= 15 or stunde == 12):  # dritte Stunde
+                    if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await etechnik()
                 # Freitag
-                elif (zeit.weekday() == 4):
-                    if (stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30):  # erste Stunde
+                elif zeit.weekday() == 4:
+                    if stunde == 7 and minute >= 45 or stunde == 8 or stunde == 9 and minute < 30:  # erste Stunde
                         await et_tutorium()
-                    if (stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15):  # zweite Stunde
+                    if stunde == 9 and minute >= 30 or stunde == 10 or stunde == 11 and minute < 15:  # zweite Stunde
                         await message.channel.send("Snens Übungsstunde")
-                    if (stunde == 11 and minute >= 15 or stunde == 12):  # dritte Stunde
+                    if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await message.channel.send("Wochenende, SAUFEN")
         if message.content.startswith("!help"):
             embed_help = discord.Embed(colour=discord.Colour(0x9999))
@@ -251,8 +251,8 @@ class MyClient(discord.Client):
                     users[str(user.id)] = {}
                     users[str(user.id)]["wallet"] = 0
                     users[str(user.id)]["bank"] = 0
-                    #HIERZU: Entweder 1 und 0 speichern fuer reset um mitternacht, ODER:
-                    #Die Zeit speichern und nur nach 6h oder so erlauben, den timer zu ersetzen
+                    # HIERZU: Entweder 1 und 0 speichern fuer reset um mitternacht, ODER:
+                    # Die Zeit speichern und nur nach 6h oder so erlauben, den timer zu ersetzen
                     users[str(user.id)]["paid"] = 0
 
                 # users = await get_bank_data()
@@ -263,7 +263,7 @@ class MyClient(discord.Client):
             # async def store_bank_data():
 
             async def payday(user):
-                #payday muss limitert werden, siehe oben
+                # payday muss limitert werden, siehe oben
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
@@ -282,7 +282,7 @@ class MyClient(discord.Client):
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
-        if (str(payload.emoji) == "💩"):
+        if str(payload.emoji) == "💩":
             user = client.get_user(payload.user_id)
             channel = client.get_channel(payload.channel_id)
             message = await channel.fetch_message(payload.message_id)
