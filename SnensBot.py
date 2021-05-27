@@ -25,7 +25,11 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
 
-    # Wenn Nachricht gepostet wird
+        channel = client.get_channel(837716949240643634)
+        await channel.send('Bin stets zu Ihren Diensten')
+        #await message.channel.send("Bin stets zu Ihren Diensten")
+    #Wenn Nachricht gepostet wird
+
     async def on_message(self, message):
 
         # reagiert nicht auf eigene Botnachrichten
@@ -213,8 +217,10 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
+
             await message.channel.send(
                 "https://cdn.discordapp.com/attachments/839789266754076722/845666202709655573/augenkrankheiten-sehschwaechen-simulation-beispielbild-katzenbaby.png")
+
 
         # economy part
         if message.content.startswith("!e"):
