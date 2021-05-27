@@ -4,8 +4,11 @@ import json
 import os
 from datetime import date, datetime, timedelta
 
-
-
+#yt video 10:20
+path = os.getcwd()
+print(path)
+os.chdir(path)
+#chdir passt sich an, den String Path ändern, wenn du was machen willst
 
 
 
@@ -14,6 +17,7 @@ class MyClient(discord.Client):
     #Einloggen
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
+
     #Wenn Nachricht gepostet wird
     async def on_message(self, message):
         #Fächer Embeds
