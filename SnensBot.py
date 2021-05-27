@@ -244,12 +244,9 @@ class MyClient(discord.Client):
                 await message.channel.send(embed=em)
 
             # opens Account
-            async def get_bank_data():
+            async def open_account(user):
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
-
-            async def open_account(user):
-                users = await get_bank_data()
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
                 if str(user.id) in users:
@@ -258,6 +255,7 @@ class MyClient(discord.Client):
                     users[str(user.id)] = {}
                     users[str(user.id)]["wallet"] = 0
                     users[str(user.id)]["bank"] = 0
+                    users[str(user.id)]["paid"] = 0
 
                 # users = await get_bank_data()
                 with open("mainbank.json", "w") as f:
@@ -266,10 +264,10 @@ class MyClient(discord.Client):
 
             # async def store_bank_data():
 
-            async def beg(user):
+            async def payday(user):
                 await open_account(message.author)
                 users = await get_bank_data()
-                earnings = random.randrange(101)
+                earnings = random.randrange(50)
                 await message.channel.send(f"Someone gave you {earnings} coins")
                 users[str(user.id)]["wallet"] += earnings
                 with open("mainbank.json", "w") as f:
@@ -279,6 +277,8 @@ class MyClient(discord.Client):
                 await open_account(message.author)
             elif mes[1] == "balance":
                 await balance(message.author)
+            elif mes[1] == "payday":
+                await payday()
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
