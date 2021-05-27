@@ -1,7 +1,7 @@
 # snensbot
 Des der Github roboder
 
-##ZUM MITPROGRAMMIEREN LESEN
+### ZUM MITPROGRAMMIEREN LESEN
 
 Wenn es etwas primitives ist und Marcel oder Leon da ist:
 -> einen von uns Fragen, dann commit to main.
@@ -11,9 +11,6 @@ Wenn es etwas kompliziertes ist, oder Marcel oder Leon nicht da sind:
 
 Main ist nicht zum experimentieren! Da hängen Krankenhäuser dran!
 
-
-Funktionalität kommt, hab geschickt
-
-Anleitung:
+### So funktionierts: 
 
 !help: Hilfe
