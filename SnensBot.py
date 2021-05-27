@@ -229,12 +229,12 @@ class MyClient(discord.Client):
             print(mess)
 
             # Balance
-            await message.channel.send("Economy wurde gecalled")
 
             async def balance(self):
                 await open_account(message.author)
                 user = message.author
-                users = await get_bank_data()
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
                 wallet_amt = users[str(message.author.id)]["wallet"]
                 bank_amt = users[str(message.author.id)]["bank"]
 
@@ -244,9 +244,14 @@ class MyClient(discord.Client):
                 await message.channel.send(embed=em)
 
             # opens Account
+            async def get_bank_data():
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+
             async def open_account(user):
                 users = await get_bank_data()
-
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
                 if str(user.id) in users:
                     return False
                 else:
@@ -259,10 +264,6 @@ class MyClient(discord.Client):
                     json.dump(users, f)
                 return True
 
-            async def get_bank_data():
-                with open("mainbank.json", "r") as f:
-                    users = json.load(f)
-
             # async def store_bank_data():
 
             async def beg(user):
@@ -274,9 +275,10 @@ class MyClient(discord.Client):
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
 
-            if mes[1] == "balance":
-                await message.channel.send(message.author.id)
+            if mes[1] == "openaccount":
                 await open_account(message.author)
+            elif mes[1] == "balance":
+                await balance(message.author)
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
