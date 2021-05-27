@@ -260,7 +260,8 @@ class MyClient(discord.Client):
                 users[str(user.id)]["wallet"] += earnings
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
-            if message.content.startswith("!balance"):
+
+            if mess[1] == "mathe" and mess[2] == " ":
                 await message.channel.send("bruh")
                 await balance(message.author)
 
