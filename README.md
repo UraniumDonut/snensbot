@@ -14,3 +14,5 @@ Main ist nicht zum experimentieren! Da hängen Krankenhäuser dran!
 ### So funktionierts: 
 
 !help: Hilfe
+!e economy
+!Fach <fach> Infos zu Fächern
