@@ -11,6 +11,7 @@ class MyClient(discord.Client):
     #Einloggen
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
+        #await message.channel.send("Bin stets zu Ihren Diensten")
     #Wenn Nachricht gepostet wird
     async def on_message(self, message):
         #Fächer Embeds
@@ -188,7 +189,8 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
-            await message.channel.send("https://cdn.discordapp.com/attachments/839789266754076722/845666202709655573/augenkrankheiten-sehschwaechen-simulation-beispielbild-katzenbaby.png")
+            print(message.channel.id)
+            await message.channel.send("test")
 
 
     #Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
