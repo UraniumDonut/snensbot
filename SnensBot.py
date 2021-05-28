@@ -122,8 +122,6 @@ class MyClient(discord.Client):
             except IndexError:
                 zusatz = " "
             mess = [mes[0].lower(), mes[1].lower(), zusatz.lower()]
-            print(mes)
-            print(mess)
             if ((mess[1] == "et" or mess[1] == "etechnik" or mess[1] == "elektrotechnik") and mess[2] == " "):
                 await etechnik()
             elif mess[1] == "mathe" and mess[2] == " ":
@@ -210,7 +208,7 @@ class MyClient(discord.Client):
 
             embed_help.add_field(name="!now", value="Gibt die aktuelle Stunde mit Zoomlink und Infos zum Fach zurück",
                                  inline=False)
-            embed_help.add_field(name="!Fach \"spezielles Fach\" ", value="Gibt das ausgewählte Fach mit Infos zurück",
+            embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach mit Infos zurück",
                                  inline=False)
             embed_help.add_field(name="reagiere mit :poop:", value="und es wird durch THAT'S CRINGE ersetzt",
                                  inline=False)
