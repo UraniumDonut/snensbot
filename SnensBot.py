@@ -39,7 +39,7 @@ class MyClient(discord.Client):
         # Fächer Embeds
         async def etechnik():
             embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
-                                     description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/getlink/fiNUiABo68ky9hWmQLxpF2pU/) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
+                                     description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/public?folderID=MjYyTlZuQm5ZNVE1NVRaS3lmQlpo) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
 
             embed_et.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
             embed_et.set_author(name="Elektrotechnik",
