@@ -279,8 +279,12 @@ class MyClient(discord.Client):
                 await open_account(message.author)
             elif mess[1] == "balance" and mess[2] == " ":
                 await balance(message.author)
-            elif mess[1] == "balance" and mess[2] == "message":
-                await balance(message.author)
+            elif mess[1] == "balance":
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+                    await message.channel.send(message.author.mention)
+                if str(message.author.mention.id) in users:
+                    await balance(mess[2])
             elif mess[1] == "payday":
                 await payday(message.author)
 
