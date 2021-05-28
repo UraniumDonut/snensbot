@@ -202,6 +202,10 @@ class MyClient(discord.Client):
                     if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await message.channel.send("Wochenende, SAUFEN")
 
+        #Beglückwünscht einen zum Kacken
+        if message.channel.id == 847741782225977354:  #Auf Siemens Server andere ID!
+            glueckwuensche = ["Hast du Toll gemacht!", "Wir sind stolz auf dich", "Die arme Kloschüssel", ":poop: :thumbsup:", "Danke für die Mitteilung"]
+            await message.channel.send(glueckwuensche[random.randrange(4)])
 
         if message.content.startswith("!help"):
             embed_help = discord.Embed(colour=discord.Colour(0x9999))
@@ -217,8 +221,7 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
-            channel = client.get_channel()
-            print(channel)
+            print(message.channel.id)
 
         # economy part
         if message.content.startswith("!e"):
