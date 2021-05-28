@@ -201,6 +201,8 @@ class MyClient(discord.Client):
                         await message.channel.send("Snens Übungsstunde")
                     if stunde == 11 and minute >= 15 or stunde == 12:  # dritte Stunde
                         await message.channel.send("Wochenende, SAUFEN")
+
+
         if message.content.startswith("!help"):
             embed_help = discord.Embed(colour=discord.Colour(0x9999))
 
@@ -215,10 +217,8 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
-
-            await message.channel.send(
-                "https://cdn.discordapp.com/attachments/839789266754076722/845666202709655573/augenkrankheiten-sehschwaechen-simulation-beispielbild-katzenbaby.png")
-
+            channel = client.get_channel()
+            print(channel)
 
         # economy part
         if message.content.startswith("!e"):
