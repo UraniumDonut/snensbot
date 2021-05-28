@@ -232,15 +232,14 @@ class MyClient(discord.Client):
 
             # Balance
 
-            async def balance(self):
-                await open_account(message.author)
-                user = message.author
+            async def balance(user):
+                await open_account(user)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
-                wallet_amt = users[str(message.author.id)]["wallet"]
-                bank_amt = users[str(message.author.id)]["bank"]
+                wallet_amt = users[str(user.id)]["wallet"]
+                bank_amt = users[str(user.id)]["bank"]
 
-                em = discord.Embed(title=f"{message.author.name}'s cash", color=39321)
+                em = discord.Embed(title=f"{user.name}'s cash", color=39321)
                 em.add_field(name="Geldbeutel Balance", value=wallet_amt)
                 em.add_field(name="Bank Balance", value=bank_amt)
                 await message.channel.send(embed=em)
@@ -276,12 +275,13 @@ class MyClient(discord.Client):
                 users[str(user.id)]["wallet"] += earnings
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
-
-            if mes[1] == "openaccount":
+            if mess[1] == "openaccount":
                 await open_account(message.author)
-            elif mes[1] == "balance":
+            elif mess[1] == "balance" and mess[2] == " ":
                 await balance(message.author)
-            elif mes[1] == "payday":
+            elif mess[1] == "balance" and mess[2] == "message":
+                await balance(message.author)
+            elif mess[1] == "payday":
                 await payday(message.author)
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
