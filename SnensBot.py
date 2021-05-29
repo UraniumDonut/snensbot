@@ -261,8 +261,6 @@ class MyClient(discord.Client):
                     users[str(user.id)] = {}
                     users[str(user.id)]["wallet"] = 0
                     users[str(user.id)]["bank"] = 0
-                    # HIERZU: Entweder 1 und 0 speichern fuer reset um mitternacht, ODER:
-                    # Die Zeit speichern und nur nach 6h oder so erlauben, den timer zu ersetzen
                     users[str(user.id)]["paid_at"] = 0
 
                 # users = await get_bank_data()
@@ -273,15 +271,18 @@ class MyClient(discord.Client):
             # async def store_bank_data():
 
             async def payday(user):
-                # payday muss limitert werden, siehe oben
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
-
-                earnings = random.randrange(50)
-                await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
-                users[str(user.id)]["wallet"] += earnings
-                users[str(user.id)]["paid_at"] = int(time.time())
+                if(int(time.time()) - users[str(user.id)]["paid_at"])>=21600:
+                    earnings = random.randrange(50)
+                    await message.channel.send(int(time.time()) - users[str(user.id)]["paid_at"])
+                    await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
+                    users[str(user.id)]["wallet"] += earnings
+                    users[str(user.id)]["paid_at"] = int(time.time())
+                else:
+                    #hier zeit uebrig hinmachen
+                    await message.channel.send("6 Stunden noch nicht vorbei!")
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
             if mess[1] == "openaccount":
