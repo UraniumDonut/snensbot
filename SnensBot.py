@@ -221,7 +221,8 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
-            print(message.channel.id)
+            print(message.created_at)
+            
 
         # economy part
         if message.content.startswith("!e"):
