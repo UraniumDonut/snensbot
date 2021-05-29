@@ -3,6 +3,7 @@ import random
 import json
 import os
 from datetime import date, datetime, timedelta
+import time
 
 # yt video 10:20
 path = os.getcwd()
@@ -273,9 +274,11 @@ class MyClient(discord.Client):
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
+
                 earnings = random.randrange(50)
                 await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
                 users[str(user.id)]["wallet"] += earnings
+                users[str(user.id)]["paid"] = int(time.time())
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
             if mess[1] == "openaccount":
