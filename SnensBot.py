@@ -276,7 +276,6 @@ class MyClient(discord.Client):
                     users = json.load(f)
                 if(int(time.time()) - users[str(user.id)]["paid_at"])>=21600:
                     earnings = random.randrange(50)
-                    await message.channel.send(int(time.time()) - users[str(user.id)]["paid_at"])
                     await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
                     users[str(user.id)]["wallet"] += earnings
                     users[str(user.id)]["paid_at"] = int(time.time())
