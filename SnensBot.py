@@ -206,7 +206,15 @@ class MyClient(discord.Client):
         #Beglückwünscht einen zum Kacken
         if message.channel.id == 847741782225977354:  #Auf Siemens Server andere ID!
             glueckwuensche = ["Hast du Toll gemacht!", "Wir sind stolz auf dich", "Die arme Kloschüssel", ":poop: :thumbsup:", "Danke für die Mitteilung"]
-            await message.channel.send(glueckwuensche[random.randrange(4)])
+            if (random.randrange(50) == 1):
+                embed_golden_shit = discord.Embed(title="Goldener Shit", colour=discord.Colour(0x9999),
+                                      description="You did it! You crazy son of a bitch- you did it!!!\nI think you may need [this](https://www.amazon.de/-/en/Poo-Emoji-Toilet-Paper-20/dp/B01N63IRG6/ref=dp_prsubs_1?pd_rd_i=B01N63IRG6&psc=1)")
+
+                embed_golden_shit.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/71zxJMIs1tL._AC_SL1300_.jpg")
+
+                await message.channel.send(embed=embed_golden_shit)
+            else:
+                await message.channel.send(glueckwuensche[random.randrange(4)])
 
         if message.content.startswith("!help"):
             embed_help = discord.Embed(colour=discord.Colour(0x9999))
