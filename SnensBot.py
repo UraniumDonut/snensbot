@@ -227,6 +227,8 @@ class MyClient(discord.Client):
                                  inline=False)
             embed_help.add_field(name="reagiere mit :poop:", value="und es wird durch THAT'S CRINGE ersetzt",
                                  inline=False)
+            embed_help.add_field(name="schreibe was in war-kacken-channel", value="und es wird kommentiert. Und btw hast du eine kleine Chance auf den Goldenen Shit",
+                                 inline=False)
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
@@ -303,12 +305,12 @@ class MyClient(discord.Client):
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
-        if str(payload.emoji) == "💩":
+        if str(payload.emoji) == "💩": #emoji ändern zu sowas wie das cringe emoji
             user = client.get_user(payload.user_id)
             channel = client.get_channel(payload.channel_id)
             message = await channel.fetch_message(payload.message_id)
-            await message.clear_reaction("💩")
-            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
+            await message.clear_reaction("💩")  #emoji ändern zu sowas wie das cringe emoji
+            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"] #2.t muss als extra emoji hinzugefügt werden
             for i in cringe:
                 await message.add_reaction(i)
 
