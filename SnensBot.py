@@ -26,7 +26,7 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
 
-        channel = client.get_channel(837716949240643634)
+        channel = client.get_channel(837716949240643634) #Channel id wechseln wenn auf Siemens Server
         await channel.send('Bin stets zu Ihren Diensten')
         #await message.channel.send("Bin stets zu Ihren Diensten")
     #Wenn Nachricht gepostet wird
@@ -222,7 +222,10 @@ class MyClient(discord.Client):
 
             await message.channel.send(embed=embed_help)
         if message.content.startswith("!test"):
-            print(message.channel.id)
+            mess_time = message.created_at.replace(second=0, microsecond=0)
+            print(mess_time)
+            letztes_mal = datetime.today().replace(second=0, microsecond=0)
+            print(letztes_mal - mess_time)
 
         # economy part
         if message.content.startswith("!e"):
@@ -260,7 +263,7 @@ class MyClient(discord.Client):
                     users[str(user.id)]["bank"] = 0
                     # HIERZU: Entweder 1 und 0 speichern fuer reset um mitternacht, ODER:
                     # Die Zeit speichern und nur nach 6h oder so erlauben, den timer zu ersetzen
-                    users[str(user.id)]["paid"] = 0
+                    users[str(user.id)]["paid_at"] = 0
 
                 # users = await get_bank_data()
                 with open("mainbank.json", "w") as f:
@@ -278,7 +281,7 @@ class MyClient(discord.Client):
                 earnings = random.randrange(50)
                 await message.channel.send(f"An deinem Zahltag kriegst du {earnings} coins")
                 users[str(user.id)]["wallet"] += earnings
-                users[str(user.id)]["paid"] = int(time.time())
+                users[str(user.id)]["paid_at"] = int(time.time())
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
             if mess[1] == "openaccount":
