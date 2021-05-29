@@ -231,6 +231,12 @@ class MyClient(discord.Client):
                                  inline=False)
 
             await message.channel.send(embed=embed_help)
+
+        if message.content.startswith("!link"):
+            link = ["http://donut.cf/", "https://www.youtube.com/watch?v=dQw4w9WgXcQ"] #hier gerne noch andere Links hinzufügen wie das Bild von Gurke oder erich drip oder son bums
+            description = "do not click this [link](" + str(link[random.randrange(len(link))]) + ")!"
+            embed_link = discord.Embed(colour=discord.Colour(0x9999), description=description)
+            await message.channel.send(embed=embed_link)
         if message.content.startswith("!test"):
             mess_time = message.created_at.replace(second=0, microsecond=0)
             print(mess_time)
