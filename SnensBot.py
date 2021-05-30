@@ -25,7 +25,7 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
 
-        channel = client.get_channel(837716949240643634) #Channel id wechseln wenn auf Siemens Server
+        channel = client.get_channel(848661221661999114) #Channel id wechseln wenn auf Siemens Server # channel id fürn testbot: 837716949240643634
         await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
@@ -200,7 +200,7 @@ class MyClient(discord.Client):
                         await message.channel.send("Wochenende, SAUFEN")
 
         #Beglückwünscht einen zum Kacken
-        if message.channel.id == 847741782225977354:  #Auf Siemens Server andere ID!
+        if message.channel.id == 831458929791598592:  #Auf Siemens Server andere ID! Channel id fürn testbot: 847741782225977354
             glueckwuensche = ["Hast du Toll gemacht!", "Wir sind stolz auf dich", "Die arme Kloschüssel", ":poop: :thumbsup:", "Danke für die Mitteilung"]
             if (random.randrange(50) == 1):
                 embed_golden_shit = discord.Embed(title="Goldener Shit", colour=discord.Colour(0x9999),
