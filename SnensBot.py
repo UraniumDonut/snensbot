@@ -237,8 +237,8 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_link)
 
         if message.content.startswith("!test"):
-            channel = client.get_channel()
-            print(channel)
+            #channel = client.get_channel(id)
+            #print(channel)
             print(message.channel.id)
 
         # economy part
