@@ -217,7 +217,7 @@ class MyClient(discord.Client):
 
             embed_help.set_author(name="Snensbot Befehle")
 
-            embed_help.add_field(name="!now", value="Gibt die aktuelle Stunde mit Zoomlink und Infos zum Fach zurück",
+            embed_help.add_field(name="!now", value="Gibt die aktuelle Stunde mit Zoomlink im Namen und Infos zum Fach zurück",
                                  inline=False)
             embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach mit Infos zurück",
                                  inline=False)
@@ -231,7 +231,7 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_help)
 
         if message.content.startswith("!link"):
-            link = ["http://donut.cf/", "https://www.youtube.com/watch?v=dQw4w9WgXcQ"] #hier gerne noch andere Links hinzufügen wie das Bild von Gurke oder erich drip oder son bums
+            link = ["http://donut.cf/", "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "http://donut.cf/wichtig.jpg", "http://gurke.gq/", "https://stockx.com/de-de/adidas-yeezy-foam-rnnr-ararat", "https://i.imgur.com/4ipQcI8.jpg", "https://www.youtube.com/watch?v=5DlROhT8NgU", "https://www.youtube.com/watch?v=EuQfn-1Q09w&t=7s", "https://external-preview.redd.it/b25gXxDPv5T8UhpZLacaB1llx8Eul8S039j0LJzIswo.png?width=640&crop=smart&auto=webp&s=6e16f7e3e02612adfff312386f8bcb91d05a35d0","https://external-preview.redd.it/IyAa4qx3t-r5nmGbHQdTCUvNRRMwpZY2OZ6dXGXF0uo.png?auto=webp&s=0886e11a4333191958330c96f99bf04c2869faf2", "https://preview.redd.it/jx3yh2em89c61.jpg?width=640&crop=smart&auto=webp&s=422fd54a49c7eda8b6bdb03ef28c044f8d479cb9"] #hier gerne noch andere Links hinzufügen
             description = "do not click this [link](" + str(link[random.randrange(len(link))]) + ")!"
             embed_link = discord.Embed(colour=discord.Colour(0x9999), description=description)
             await message.channel.send(embed=embed_link)
