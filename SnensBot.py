@@ -322,4 +322,6 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run("ODM3NzIwNTAyOTg1NTU1OTk5.YIwqBA.d2jnBMMTOP58V8jMenLLWZBFg9E")
+with open("keys.json", "r") as f:
+    keys = json.load(f)
+client.run(keys["key"])
