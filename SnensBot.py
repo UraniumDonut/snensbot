@@ -5,7 +5,6 @@ import os
 from datetime import date, datetime, timedelta
 import time
 
-# yt video 10:20
 path = os.getcwd()
 print(path)
 os.chdir(path)
@@ -28,7 +27,6 @@ class MyClient(discord.Client):
 
         channel = client.get_channel(837716949240643634) #Channel id wechseln wenn auf Siemens Server
         await channel.send('Bin stets zu Ihren Diensten')
-        #await message.channel.send("Bin stets zu Ihren Diensten")
     #Wenn Nachricht gepostet wird
 
     async def on_message(self, message):
@@ -142,7 +140,7 @@ class MyClient(discord.Client):
 
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
-            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
+            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"] #:t2 wird wsh andere id haben
             await message.delete()
             for i in cringe:
                 await message.channel.send(i)
@@ -239,11 +237,11 @@ class MyClient(discord.Client):
             description = "do not click this [link](" + str(link[random.randrange(len(link))]) + ")!"
             embed_link = discord.Embed(colour=discord.Colour(0x9999), description=description)
             await message.channel.send(embed=embed_link)
+
         if message.content.startswith("!test"):
-            mess_time = message.created_at.replace(second=0, microsecond=0)
-            print(mess_time)
-            letztes_mal = datetime.today().replace(second=0, microsecond=0)
-            print(letztes_mal - mess_time)
+            channel = client.get_channel()
+            print(channel)
+            print(message.channel.id)
 
         # economy part
         if message.content.startswith("!e"):
