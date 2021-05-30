@@ -147,9 +147,7 @@ class MyClient(discord.Client):
         # gibt die aktuelle Vorlesung mit Link an
         if message.content.startswith("!now"):
             nachricht_zeit = message.created_at.replace(second=0, microsecond=0) + timedelta(hours=2)
-            print(nachricht_zeit)
             jetzt = datetime.today().replace(second=0, microsecond=0)
-            print(jetzt)
             if nachricht_zeit == jetzt:
                 zeit = nachricht_zeit
                 stunde = zeit.hour
