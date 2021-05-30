@@ -225,6 +225,8 @@ class MyClient(discord.Client):
                                  inline=False)
             embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach mit Infos zurück",
                                  inline=False)
+            embed_help.add_field(name="!link> ", value="link",
+                                 inline=False)
             embed_help.add_field(name="reagiere mit :poop:", value="und es wird durch THAT'S CRINGE ersetzt",
                                  inline=False)
             embed_help.add_field(name="schreibe was in war-kacken-channel", value="und es wird kommentiert. Und btw hast du eine kleine Chance auf den Goldenen Shit",
