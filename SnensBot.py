@@ -119,7 +119,7 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_et_t)
 
         # Gibt die Fächerembeds aus, Wenn !Fach "spezielles Fach" eingegeben wird
-        if message.content.startswith("!Fach"):
+        if message.content.startswith("!Fach") or message.content.startswith("!fach"):
             mes = message.content.split(" ")
             try:
                 zusatz = mes[2]
