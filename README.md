@@ -14,5 +14,15 @@ Main ist nicht zum experimentieren! Da hängen Krankenhäuser dran!
 ### So funktionierts: 
 
 !help: Hilfe  
-!e economy  
-!Fach <fach> Infos zu Fächern  
+!e: economy  
+    ..payday
+    ..balance
+!Fach <fach>: Infos zu Fächern  
+!now: Jetziges Fach
+!link: Luschtiger Link
+<auf emoji mit 💩reagieren, dann ersetz der bot alles durch Cringe>
+  
+###Für eigenen Server benutzen:
+
+Wenn du nicht zum snens server gehörst, und diesen server benutzen willst:
+  Channels.json und keys.json musst du selber eingeben, dann sollte es gehen
