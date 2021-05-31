@@ -24,8 +24,13 @@ class MyClient(discord.Client):
     # Einloggen
     async def on_ready(self):
         print("Ich habe mich eingeloggt.")
-
-        channel = client.get_channel(848661221661999114) #Channel id wechseln wenn auf Siemens Server # channel id fürn testbot: 837716949240643634
+        with open("channels.json", "r") as f:
+            channels = json.load(f)
+        #channels["warkacken"] = 847741782225977354
+        #with open("channels.json", "w") as f:
+        #    json.dump(channels, f)
+        #dashier vom erstellen von neuen jsons
+        channel = client.get_channel(channels["snensmain"]) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
         await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
@@ -114,7 +119,7 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_et_t)
 
         # Gibt die Fächerembeds aus, Wenn !Fach "spezielles Fach" eingegeben wird
-        if message.content.startswith("!Fach"):
+        if message.content.startswith("!Fach") or message.content.startswith("!fach"):
             mes = message.content.split(" ")
             try:
                 zusatz = mes[2]
@@ -200,7 +205,9 @@ class MyClient(discord.Client):
                         await message.channel.send("Wochenende, SAUFEN")
 
         #Beglückwünscht einen zum Kacken
-        if message.channel.id == 831458929791598592:  #Auf Siemens Server andere ID! Channel id fürn testbot: 847741782225977354
+        with open("channels.json", "r") as f:
+            channels = json.load(f)
+        if message.channel.id == channels["warkacken"]:  #Auf Siemens Server andere ID! Channel id fürn testbot: 847741782225977354
             glueckwuensche = ["Hast du Toll gemacht!", "Wir sind stolz auf dich", "Die arme Kloschüssel", ":poop: :thumbsup:", "Danke für die Mitteilung"]
             if (random.randrange(50) == 1):
                 embed_golden_shit = discord.Embed(title="Goldener Shit", colour=discord.Colour(0x9999),
