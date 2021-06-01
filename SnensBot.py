@@ -34,6 +34,8 @@ class MyClient(discord.Client):
         await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
+
+
     async def on_message(self, message):
 
         # reagiert nicht auf eigene Botnachrichten
@@ -147,8 +149,7 @@ class MyClient(discord.Client):
         if message.content.startswith("!cringe"):
             cringe = ["🇹", "🇭", "🇦", ":t2:849167204678631425", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
             await message.delete()
-            for i in cringe:
-                await message.channel.send(i)
+            await message.channel.send(cringe)
         # gibt die aktuelle Vorlesung mit Link an
         if message.content.startswith("!now"):
             nachricht_zeit = message.created_at.replace(second=0, microsecond=0) + timedelta(hours=2)
@@ -305,6 +306,33 @@ class MyClient(discord.Client):
                     await message.channel.send("6 Stunden noch nicht vorbei!")
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
+
+            async def banktransfer(amount, user):
+                await open_account(message.author)
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+                if(users[str(user.id)]["wallet"]>=amount):
+                    users[str(user.id)]["wallet"] -= amount
+                    users[str(user.id)]["bank"] += amount
+                else:
+                    await message.channel.send("keine Geld")
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+                await balance(user)
+
+            async def wallettransfer(amount, user):
+                await open_account(message.author)
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+                if (users[str(user.id)]["bank"] >= amount):
+                    users[str(user.id)]["wallet"] += amount
+                    users[str(user.id)]["bank"] -= amount
+                else:
+                    await message.channel.send("keine Geld")
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+                await balance(user)
+
             if mess[1] == "openaccount":
                 await open_account(message.author)
             elif mess[1] == "balance" and mess[2] == " ":
@@ -313,6 +341,16 @@ class MyClient(discord.Client):
                 await balance(message.mentions[0])
             elif mess[1] == "payday":
                 await payday(message.author)
+            elif mess[1] == "banktransfer":
+
+                if (mess[2].isdigit()):
+                    if(int(mess[2])>0):
+                        await banktransfer(int(mess[2]), message.author)
+            elif mess[1] == "wallettransfer":
+                if(mess[2].isdigit()):
+                    if (int(mess[2]) > 0):
+                       await wallettransfer(int(mess[2]), message.author)
+
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
