@@ -145,7 +145,7 @@ class MyClient(discord.Client):
 
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
-            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"] #:t2 wird wsh andere id haben
+            cringe = ["🇹", "🇭", "🇦", ":t2:849167204678631425", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
             await message.delete()
             for i in cringe:
                 await message.channel.send(i)
@@ -321,7 +321,7 @@ class MyClient(discord.Client):
             channel = client.get_channel(payload.channel_id)
             message = await channel.fetch_message(payload.message_id)
             await message.clear_reaction("💩")  #emoji ändern zu sowas wie das cringe emoji
-            cringe = ["🇹", "🇭", "🇦", ":t2:841412559726968882", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"] #2.t muss als extra emoji hinzugefügt werden
+            cringe = ["🇹", "🇭", "🇦", ":t2:849167204678631425", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
             for i in cringe:
                 await message.add_reaction(i)
 
