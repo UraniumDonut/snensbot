@@ -145,7 +145,7 @@ class MyClient(discord.Client):
 
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
-            cringe = ["🇹", "🇭", "🇦", ":t2:849167204678631425", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
+            cringe = ["🇹", "🇭", "🇦", "🇹", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
             await message.delete()
             await message.channel.send(cringe)
         # gibt die aktuelle Vorlesung mit Link an
