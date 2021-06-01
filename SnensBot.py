@@ -149,7 +149,7 @@ class MyClient(discord.Client):
         if message.content.startswith("!cringe"):
             cringe = ["🇹", "🇭", "🇦", "🇹", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
             await message.delete()
-            await message.channel.send(cringe)
+            await message.channel.send("🇹🇭🇦🇹🇸🇨🇷🇮🇳🇬🇪")
         # gibt die aktuelle Vorlesung mit Link an
         if message.content.startswith("!now"):
             nachricht_zeit = message.created_at.replace(second=0, microsecond=0) + timedelta(hours=2)
