@@ -333,6 +333,19 @@ class MyClient(discord.Client):
                     json.dump(users, f)
                 await balance(user)
 
+            async def transfer(amount, von, zu):
+                await open_account(von)
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+                if (users[str(von.id)]["bank"] >= amount):
+                    users[str(von.id)]["bank"] -= amount
+                    users[str(zu.id)]["bank"] += amount
+                    await message.channel.send("Transaktion Erfolgreich")
+                else:
+                    await message.channel.send("Transaktion nicht Erfolgreich")
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+
             if mess[1] == "openaccount":
                 await open_account(message.author)
             elif mess[1] == "balance" and mess[2] == " ":
@@ -350,7 +363,11 @@ class MyClient(discord.Client):
                 if(mess[2].isdigit()):
                     if (int(mess[2]) > 0):
                        await wallettransfer(int(mess[2]), message.author)
-
+            elif mess[1] == "transfer":
+                if(mess[2].isdigit()):
+                    if (int(mess[2]) > 0):
+                        if(message.mentions):
+                            await transfer(int(mess[2]),message.author, message.mentions[0])
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
