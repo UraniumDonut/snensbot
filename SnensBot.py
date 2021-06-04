@@ -368,6 +368,10 @@ class MyClient(discord.Client):
                     if (int(mess[2]) > 0):
                         if(message.mentions):
                             await transfer(int(mess[2]),message.author, message.mentions[0])
+            elif mess[1] == "coin":
+                if(mess[2]=="kopf" or mess[2] == "zahl"):
+                    await message.channel.send("marcel, bitte füge mess[3] hinzu ich hab kein Plan wie das geht")
+
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
     async def on_raw_reaction_add(self, payload):
