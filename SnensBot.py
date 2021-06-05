@@ -315,14 +315,18 @@ class MyClient(discord.Client):
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
                     users = json.load(f)
-                    sieg = random.randrange(2)
                     einsatz = int(mess[3])
-                    if (sieg == 0):
-                        await message.channel.send("oh leider verloren")
-                        users[str(user.id)]["wallet"] -= einsatz
-                    elif (sieg == 1):
-                        await message.channel.send("nice du hast " + str(2*einsatz) + " gewonnen")
-                        users[str(user.id)]["wallet"] += 2*einsatz
+                    if(einsatz<=users[str(user.id)]["wallet"]):
+                        sieg = random.randrange(2)
+
+                        if (sieg == 0):
+                            await message.channel.send("oh leider verloren")
+                            users[str(user.id)]["wallet"] -= einsatz
+                        elif (sieg == 1):
+                            await message.channel.send("nice du hast " + str(2*einsatz) + " gewonnen")
+                            users[str(user.id)]["wallet"] += 2*einsatz
+                    else:
+                        await message.channel.send("kein Geld!(Du musst Geld im Wallet haben)")
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
 
@@ -389,7 +393,7 @@ class MyClient(discord.Client):
                         if(message.mentions):
                             await transfer(int(mess[2]),message.author, message.mentions[0])
             elif mess[1] == "coin":
-                if(mess[2]=="kopf" or mess[2] == "zahl"):
+                if(mess[2]=="kopf" or mess[2] == "zahl" or mess[2] == "heads" or mess[2] == "tails"):
                     if (mess[3].isdigit()):
                         if (int(mess[3]) > 0):
                             await coin(message.author)
