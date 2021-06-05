@@ -29,9 +29,9 @@ class MyClient(discord.Client):
         #channels["warkacken"] = 847741782225977354
         #with open("channels.json", "w") as f:
         #    json.dump(channels, f)
-        #dashier vom erstellen von neuen jsons
-        channel = client.get_channel(channels["snensmain"]) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
-        #await channel.send('Bin stets zu Ihren Diensten')
+        #das hier vom erstellen von neuen jsons
+        channel = client.get_channel(str(channels["snensmain"])) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
+        await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
 
@@ -150,7 +150,7 @@ class MyClient(discord.Client):
                 await message.channel.send("Ungültige Eingabe, probiers bitte nochmal")
 
         #hornyjail für gewisse Leute
-        if message.content.startswith("bbboobs" or "bbass"):
+        if message.content.startswith("bbboobs") or message.content.startswith("bbass"):
             await message.channel.send("https://tenor.com/view/horny-jail-bonk-dog-hit-head-stop-being-horny-gif-17298755")
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
