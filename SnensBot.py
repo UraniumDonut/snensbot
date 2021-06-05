@@ -103,13 +103,13 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_info)
 
         async def mathe_tutorium():
-            embed_mathte_t = discord.Embed(title="von Larissa", colour=discord.Colour(0x9999),
+            embed_mathe_t = discord.Embed(title="von Larissa", colour=discord.Colour(0x9999),
                                            description="Mitschriften sind in Teams\n```Vorlesungszeit:\nMittwoch   8.00-9.45 Uhr```")
 
-            embed_mathte_t.set_author(name="Mathe Tutorium",
+            embed_mathe_t.set_author(name="Mathe Tutorium",
                                       url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3A48c9ec6c739d4bdf95894e4951d0c237%40thread.tacv2%2FAllgemein%3FgroupId%3D7d9c6fd6-6d97-44f9-9076-3f93ad5da095%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=channel&deeplinkId=51e21896-6373-4705-a270-9f0fce6e7b55&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")
 
-            await message.channel.send(embed=embed_mathte_t)
+            await message.channel.send(embed=embed_mathe_t)
 
         async def et_tutorium():
             embed_et_t = discord.Embed(title="von Dominik", colour=discord.Colour(0x9999),
@@ -124,10 +124,14 @@ class MyClient(discord.Client):
         if message.content.startswith("!Fach") or message.content.startswith("!fach"):
             mes = message.content.split(" ")
             try:
+                zusatz2 = mes[1]
+            except IndexError:
+                zusatz2 = " "
+            try:
                 zusatz = mes[2]
             except IndexError:
                 zusatz = " "
-            mess = [mes[0].lower(), mes[1].lower(), zusatz.lower()]
+            mess = [mes[0].lower(), zusatz2.lower(), zusatz.lower()]
             if ((mess[1] == "et" or mess[1] == "etechnik" or mess[1] == "elektrotechnik") and mess[2] == " "):
                 await etechnik()
             elif mess[1] == "mathe" and mess[2] == " ":
