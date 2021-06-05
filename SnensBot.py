@@ -145,6 +145,9 @@ class MyClient(discord.Client):
             else:
                 await message.channel.send("Ungültige Eingabe, probiers bitte nochmal")
 
+        #hornyjail für gewisse Leute
+        if message.content.startswith("bbboobs" or "bbass"):
+            await message.channel.send("https://tenor.com/view/horny-jail-bonk-dog-hit-head-stop-being-horny-gif-17298755")
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
             cringe = ["🇹", "🇭", "🇦", "🇹", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
@@ -248,7 +251,7 @@ class MyClient(discord.Client):
             #channel = client.get_channel(id)
             #print(channel)
             print(message.channel.id)
-
+#==================================================================================================================================================================================
         # economy part
         if message.content.startswith("!e"):
 
