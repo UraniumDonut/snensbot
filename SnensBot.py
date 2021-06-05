@@ -31,7 +31,7 @@ class MyClient(discord.Client):
         #    json.dump(channels, f)
         #dashier vom erstellen von neuen jsons
         channel = client.get_channel(channels["snensmain"]) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
-        await channel.send('Bin stets zu Ihren Diensten')
+        #await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
 
