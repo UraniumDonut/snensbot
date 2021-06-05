@@ -390,8 +390,9 @@ class MyClient(discord.Client):
                             await transfer(int(mess[2]),message.author, message.mentions[0])
             elif mess[1] == "coin":
                 if(mess[2]=="kopf" or mess[2] == "zahl"):
-                    if (int(mess[3]) > 0):
-                        await coin(message.author)
+                    if (mess[3].isdigit()):
+                        if (int(mess[3]) > 0):
+                            await coin(message.author)
 
 
 
