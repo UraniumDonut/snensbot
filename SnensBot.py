@@ -47,7 +47,7 @@ class MyClient(discord.Client):
             embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
                                      description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/public?folderID=MjYyTlZuQm5ZNVE1NVRaS3lmQlpo) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
 
-            embed_et.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
+            embed_et.set_thumbnail(url="https://cdn.discordapp.com/emojis/821033652532150302.png?v=1")
             embed_et.set_author(name="Elektrotechnik",
                                 url="https://th-nuernberg.zoom.us/j/99486053126?pwd=RGluUW5JY2pWc2xiVTJ4L28zWjNpQT09")
 
@@ -57,7 +57,7 @@ class MyClient(discord.Client):
             embed_mathe = discord.Embed(title="Dozentin: Rademacher", colour=discord.Colour(0x9999),
                                         description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/getlink/fiNUiABo68ky9hWmQLxpF2pU/) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nDienstag \t 8.00-9.30  Uhr \nMittwoch  \t9.45-11.15 Uhr \nDonnerstag\t8.00-9.30  Uhr```")
 
-            embed_mathe.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
+            embed_mathe.set_thumbnail(url="https://cdn.discordapp.com/emojis/823826133384560721.png?v=1")
             embed_mathe.set_author(name="Mathe",
                                    url="https://th-nuernberg.zoom.us/j/92451031531?pwd=TU14c2ZsckFVaWVONWppM01YNG9aUT09")
             await message.channel.send(embed=embed_mathe)
@@ -76,7 +76,7 @@ class MyClient(discord.Client):
             embed_et_uebung = discord.Embed(title="Dozent: Pfleger", colour=discord.Colour(0x9999),
                                             description="Es wird nicht aufgezeichnet und nichts hochgeladen.\nLösungsbilder sind im Discord Channel \"et-übung\"\n```Vorlesungszeiten:\nDienstag   11.30-13.00 Uhr\nDonnerstag 14.00-15.30 Uhr\nDonnerstag 15.45-17.15 Uhr```")
 
-            embed_et_uebung.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
+            embed_et_uebung.set_thumbnail(url="https://cdn.discordapp.com/emojis/823867396904976384.png?v=1")
             embed_et_uebung.set_author(name="ET Übung",
                                        url="https://th-nuernberg.zoom.us/j/91315110443?pwd=Vno0U0pCNlBUM2thWHloQ2RFK1Rudz09")
 
