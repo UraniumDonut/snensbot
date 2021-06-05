@@ -228,9 +228,9 @@ class MyClient(discord.Client):
 
             embed_help.set_author(name="Snensbot Befehle")
 
-            embed_help.add_field(name="!now", value="Gibt die aktuelle Stunde mit Zoomlink im Namen und Infos zum Fach zurück",
+            embed_help.add_field(name="!now", value="Gibt die aktuelle Stunde mit Zoomlink im Namen!!!! und Infos zum Fach zurück",
                                  inline=False)
-            embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach mit Infos zurück",
+            embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach (Zoomlink im Namen!!) mit Infos zurück",
                                  inline=False)
             embed_help.add_field(name="!link> ", value="link",
                                  inline=False)
