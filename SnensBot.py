@@ -248,7 +248,7 @@ class MyClient(discord.Client):
             #channel = client.get_channel(id)
             #print(channel)
             print(message.channel.id)
-
+#====================================================================================================================================================================================================
         # economy part
         if message.content.startswith("!e"):
 
@@ -257,7 +257,11 @@ class MyClient(discord.Client):
                 zusatz = mes[2]
             except IndexError:
                 zusatz = " "
-            mess = [mes[0].lower(), mes[1].lower(), zusatz.lower()]
+            try:
+                zusatz2 = mes[3]
+            except IndexError:
+                zusatz2 = " "
+            mess = [mes[0].lower(), mes[1].lower(), zusatz.lower(), zusatz2.lower()]
 
             # Balance
 
