@@ -31,7 +31,7 @@ class MyClient(discord.Client):
         #    json.dump(channels, f)
         #dashier vom erstellen von neuen jsons
         channel = client.get_channel(channels["snensmain"]) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
-        await channel.send('Bin stets zu Ihren Diensten')
+        #!await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
 
@@ -311,6 +311,22 @@ class MyClient(discord.Client):
                 with open("mainbank.json", "w") as f:
                     json.dump(users, f)
 
+            async def coin(user):
+                await open_account(message.author)
+                with open("mainbank.json", "r") as f:
+                    users = json.load(f)
+                    sieg = random.randrange(2)
+                    einsatz = int(mess[3])
+                    if (sieg == 0):
+                        await message.channel.send("oh leider verloren")
+                        users[str(user.id)]["wallet"] -= einsatz
+                    elif (sieg == 1):
+                        await message.channel.send("nice du hast " + str(2*einsatz) + " gewonnen")
+                        users[str(user.id)]["wallet"] += 2*einsatz
+                with open("mainbank.json", "w") as f:
+                    json.dump(users, f)
+
+
             async def banktransfer(amount, user):
                 await open_account(message.author)
                 with open("mainbank.json", "r") as f:
@@ -374,7 +390,9 @@ class MyClient(discord.Client):
                             await transfer(int(mess[2]),message.author, message.mentions[0])
             elif mess[1] == "coin":
                 if(mess[2]=="kopf" or mess[2] == "zahl"):
-                    await message.channel.send("marcel, bitte füge mess[3] hinzu ich hab kein Plan wie das geht")
+                    if (int(mess[3]) > 0):
+                        await coin(message.author)
+
 
 
     # Wenn mit :poop: reacted wird, wird es durch THATSCRINGE ersetzt
