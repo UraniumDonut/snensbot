@@ -66,7 +66,7 @@ class MyClient(discord.Client):
             embed_physik = discord.Embed(title="Dozent: Kottcke", colour=discord.Colour(0x9999),
                                          description="Es wird nicht aufgezeichnet, aber es werden im [Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=9357) die Mitschriften hochgeladen.\n```Vorlesungszeit:\nMontag 11.30-13.00 Uhr```")
 
-            embed_physik.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
+            embed_physik.set_thumbnail(url="https://cdn.discordapp.com/attachments/848661221661999114/851393878421929994/unknown.png")
             embed_physik.set_author(name="Physik",
                                     url="https://th-nuernberg.zoom.us/j/6012092945?pwd=VjNOWStQLzYzcjdGRFRpMnFQTGlmQT09")
 
