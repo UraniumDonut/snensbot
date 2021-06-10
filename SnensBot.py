@@ -33,7 +33,7 @@ class MyClient(discord.Client):
         #with open("channels.json", "w") as f:
         #    json.dump(channels, f)
         #das hier vom erstellen von neuen jsons
-        channel = client.get_channel(str(channels["snensmain"])) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
+        channel = client.get_channel((channels["snensmain"])) #Channel id wechseln wenn auf Siemens Server 848661221661999114 # channel id fürn testbot: 837716949240643634
         await channel.send('Bin stets zu Ihren Diensten')
     #Wenn Nachricht gepostet wird
 
@@ -266,10 +266,12 @@ class MyClient(discord.Client):
             embed_link = discord.Embed(colour=discord.Colour(0x9999), description=description)
             await message.channel.send(embed=embed_link)
 
-        if message.content.startswith("!test"):
+        if message.content.startswith("!channel"):
             #channel = client.get_channel(id)
             #print(channel)
             print(message.channel.id)
+        if message.content.startswith("!test"):
+            1
 #====================================================================================================================================================================================================
 
         # economy part
@@ -419,10 +421,13 @@ class MyClient(discord.Client):
                 if(mess[2]=="kopf" or mess[2] == "zahl" or mess[2] == "heads" or mess[2] == "tails"):
                     if (mess[3].isdigit()):
                         if (int(mess[3]) > 0):
-                            #if message.channel_id == 809410273043152946:
+                            with open("channels.json", "r") as f:
+                                channels = json.load(f)
+                            channel = client.get_channel((channels["spam"]))
+                            if message.channel.id == channel:  #809410273043152946
                                 await coin(message.author)
-                            #else:
-                            #    await message.delete
+                            else:
+                                await message.channel.purge(limit=1)
 
 
 
