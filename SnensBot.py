@@ -250,6 +250,13 @@ class MyClient(discord.Client):
                                  inline=False)
             embed_help.add_field(name="schreibe was in war-kacken-channel", value="und es wird kommentiert. Und btw hast du eine kleine Chance auf den Goldenen Shit",
                                  inline=False)
+            embed_help.add_field(name="!e",value="ECONOMY",inline=False)
+            embed_help.add_field(name="coin heads <zahl>", value="Coinflip", inline=False)
+            embed_help.add_field(name="transfer <zahl> <user>", value="Geld Senden", inline=False)
+            embed_help.add_field(name="banktransfer <zahl>", value="Geld in deine Bank", inline=False)
+            embed_help.add_field(name="wallettransfer <zahl>", value="Geld in deinen Geldbeutel", inline=False)
+            embed_help.add_field(name="balance", value="Zeigt dein Geld an", inline=False)
+            embed_help.add_field(name="payday", value="Zahltag alle 6h", inline=False)
 
             await message.channel.send(embed=embed_help)
 
