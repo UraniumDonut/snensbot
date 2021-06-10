@@ -11,7 +11,8 @@ path = os.getcwd()
 print(path)
 os.chdir(path)
 
-
+global horny_jail
+horny_jail = 0
 # chdir passt sich an, den String Path ändern, wenn du was machen willst
 
 # Helper functions
@@ -153,7 +154,12 @@ class MyClient(discord.Client):
 
         #hornyjail für gewisse Leute
         if message.content.startswith("bbboobs") or message.content.startswith("bbass"):
-            await message.channel.send("https://tenor.com/view/horny-jail-bonk-dog-hit-head-stop-being-horny-gif-17298755")
+            global horny_jail
+            horny_jail += 1
+            if horny_jail %3 == 0:
+                await message.channel.send("https://tenor.com/view/horny-jail-bonk-dog-hit-head-stop-being-horny-gif-17298755")
+
+
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
             cringe = ["🇹", "🇭", "🇦", "🇹", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
