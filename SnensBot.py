@@ -412,7 +412,10 @@ class MyClient(discord.Client):
                 if(mess[2]=="kopf" or mess[2] == "zahl" or mess[2] == "heads" or mess[2] == "tails"):
                     if (mess[3].isdigit()):
                         if (int(mess[3]) > 0):
-                            await coin(message.author)
+                            if message.channel_id == 809410273043152946:
+                                await coin(message.author)
+                            else:
+                                await message.delete
 
 
 
