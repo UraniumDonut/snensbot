@@ -340,7 +340,7 @@ class MyClient(discord.Client):
                             users[str(user.id)]["wallet"] -= einsatz
                         elif (sieg == 1):
                             await message.channel.send("nice du hast " + str(2*einsatz) + " gewonnen")
-                            users[str(user.id)]["wallet"] += 2*einsatz
+                            users[str(user.id)]["wallet"] += einsatz
                     else:
                         await message.channel.send("kein Geld!(Du musst Geld im Wallet haben)")
                 with open("mainbank.json", "w") as f:
