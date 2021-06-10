@@ -158,6 +158,10 @@ class MyClient(discord.Client):
             horny_jail += 1
             if horny_jail %3 == 0:
                 await message.channel.send("https://tenor.com/view/horny-jail-bonk-dog-hit-head-stop-being-horny-gif-17298755")
+                roles = discord.utils.get(message.guild.roles, name='Horny Jail')
+                await message.author.add_roles(roles)
+                #time.sleep(10)
+                await message.author.remove_roles(roles)
 
 
         # schreibt neue Nachricht mit THATSCRINGE
