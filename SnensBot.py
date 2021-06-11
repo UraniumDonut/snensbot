@@ -427,8 +427,8 @@ class MyClient(discord.Client):
                         if (int(mess[3]) > 0):
                             with open("channels.json", "r") as f:
                                 channels = json.load(f)
-                            channel = client.get_channel((channels["spam"]))
-                            if message.channel.id == channel:  #809410273043152946
+                            spemchannel = client.get_channel((channels["spam"]))
+                            if message.channel.id == spemchannel:  #809410273043152946
                                 await coin(message.author)
                             else:
                                 await message.channel.purge(limit=1)
