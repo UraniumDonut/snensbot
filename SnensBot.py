@@ -59,6 +59,24 @@ class MyClient(discord.Client):
             return
 
         # Fächer Embeds
+        async def fachEmbedMacher(Fach):
+            connection = create_connection()
+            cursor = connection.cursor()
+            sql = "SELECT * FROM stundenplan WHERE FACH='"+Fach+"'"
+            cursor.execute(sql)
+            gendr = "Dozent: "
+            for dsatz in cursor:
+                if(dsatz[8]==1):
+                    gendr = "Dozentin: "
+
+            return discord.Embed(title=gendr+" Rademacher", colour=discord.Colour(0x9999),
+                                        description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/getlink/fiNUiABo68ky9hWmQLxpF2pU/) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nDienstag \t 8.00-9.30  Uhr \nMittwoch  \t9.45-11.15 Uhr \nDonnerstag\t8.00-9.30  Uhr```")
+
+
+
+            connection.close()
+
+            
         async def etechnik():
             embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
                                      description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/public?folderID=MjYyTlZuQm5ZNVE1NVRaS3lmQlpo) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
@@ -70,13 +88,16 @@ class MyClient(discord.Client):
             await message.channel.send(embed=embed_et)
 
         async def mathe():
-            embed_mathe = discord.Embed(title="Dozentin: Rademacher", colour=discord.Colour(0x9999),
+            '''embed_mathe = discord.Embed(title="Dozentin: Rademacher", colour=discord.Colour(0x9999),
                                         description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/getlink/fiNUiABo68ky9hWmQLxpF2pU/) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nDienstag \t 8.00-9.30  Uhr \nMittwoch  \t9.45-11.15 Uhr \nDonnerstag\t8.00-9.30  Uhr```")
 
             embed_mathe.set_thumbnail(url="https://cdn.discordapp.com/emojis/823826133384560721.png?v=1")
             embed_mathe.set_author(name="Mathe",
                                    url="https://th-nuernberg.zoom.us/j/92451031531?pwd=TU14c2ZsckFVaWVONWppM01YNG9aUT09")
+            await message.channel.send(embed=embed_mathe)'''
+            embed_mathe = await fachEmbedMacher("Mathe")
             await message.channel.send(embed=embed_mathe)
+
 
         async def physik():
             embed_physik = discord.Embed(title="Dozent: Kottcke", colour=discord.Colour(0x9999),
