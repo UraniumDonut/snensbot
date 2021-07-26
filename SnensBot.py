@@ -13,6 +13,8 @@ os.chdir(path)
 
 global horny_jail
 horny_jail = 0
+global spe_link
+spe_link = ""
 # chdir passt sich an, den String Path ändern, wenn du was machen willst
 
 # Helper functions
@@ -248,6 +250,12 @@ class MyClient(discord.Client):
                                  inline=False)
             embed_help.add_field(name="!Fach <fach> ", value="Gibt das ausgewählte Fach (Zoomlink im Namen!!) mit Infos zurück",
                                  inline=False)
+            embed_help.add_field(name="!spe oder !SPE",
+                                 value="Gibt den derzeitigen SPE Link an (Gründer schaut drauf)",
+                                 inline=False)
+            embed_help.add_field(name="!spe edit <link> ",
+                                 value="Ändert den SPE link",
+                                 inline=False)
             embed_help.add_field(name="!link> ", value="link",
                                  inline=False)
             embed_help.add_field(name="reagiere mit :poop:", value="und es wird durch THAT'S CRINGE ersetzt",
@@ -276,6 +284,34 @@ class MyClient(discord.Client):
             print(message.channel.id)
         if message.content.startswith("!test"):
             1
+        if message.content.startswith("!spe") or message.content.startswith("!SPE"):
+            global spe_link
+            mes = message.content.split(" ")
+            try:
+                zusatz = mes[1]
+            except IndexError:
+                zusatz = " "
+            try:
+                zusatz2 = mes[2]
+            except IndexError:
+                zusatz2 = " "
+            mess = [mes[0].lower(), zusatz.lower(), zusatz2]
+
+            if mess[1] == " ":
+                print(spe_link)
+                embed_spe = discord.Embed(colour=discord.Colour(0x9999))
+
+                embed_spe.set_thumbnail(url="https://cdn.discordapp.com/emojis/845195204365778974.png?v=1")
+                embed_spe.set_author(name="SPE LINK", url= spe_link)
+
+                await message.channel.send(embed=embed_spe)
+
+            if mess[1] == "edit":
+                if mess[2] == " ":
+                    await message.channel.send("Hier fehlt ein Link")
+                else:
+                    spe_link = mess[2]
+
 #====================================================================================================================================================================================================
 
         # economy part
