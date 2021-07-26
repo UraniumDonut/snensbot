@@ -29,7 +29,7 @@ async def get_bank_data(self):
 def create_connection():
     connection = None
     try:
-        connection = sqlite3.connect("snens.sqlite")
+        connection = sqlite3.connect("snensdb/snens.sqlite")
     except Error as e:
         print(f"The Datenbank error '{e}' occurred")
     return connection
