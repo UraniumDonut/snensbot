@@ -178,15 +178,15 @@ class MyClient(discord.Client):
 
 
         #SQL test erstmal
-        if message.content.startswith("!ganzer Stundenplan"):
+        if message.content.startswith("!stundenplan"):
             connection = create_connection()
             cursor = connection.cursor()
             sql = "SELECT * FROM stundenplan"
 
             cursor.execute(sql)
             for dsatz in cursor:
-                await message.channel.send("Beginn um " + str(dsatz[0]//60) +":"+ str(dsatz[0]%60) + " Ende um " +str((dsatz[1]+dsatz[0])//60) +":"+ str((dsatz[1]+dsatz[0])%60)+ " "+ str(dsatz[2])+ " "+ str(dsatz[3])+ " ")
-
+                await message.channel.send("Beginn um " + str(dsatz[0]//60) +":"+ str(dsatz[0]%60) + " Ende um " +str((dsatz[1]+dsatz[0])//60) +":"+ str((dsatz[1]+dsatz[0])%60)+ " "+ str(dsatz[2])+ " "+ str(dsatz[3])+ " "+ str(dsatz[4])+ " "+ str(dsatz[5])+ " "+ str(dsatz[6])+ " "+ str(dsatz[7])+ " "+ str(dsatz[8])+ " "+ str(dsatz[9]))
+            connection.close()
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
             cringe = ["🇹", "🇭", "🇦", "🇹", "🇸", "🇨", "🇷", "🇮", "🇳", "🇬", "🇪"]
