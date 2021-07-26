@@ -6,6 +6,9 @@ from datetime import date, datetime, timedelta
 import time
 import asyncio
 import aioschedule as schedule
+import sqlite3
+from sqlite3 import Error
+
 
 path = os.getcwd()
 print(path)
@@ -22,6 +25,15 @@ async def get_bank_data(self):
     with open("mainbank.json", "r") as f:
         users = json.load(f)
     return users
+
+def create_connection(path):
+    connection = None
+    try:
+        connection = sqlite3.connect(path)
+    except Error as e:
+        print(f"The Datenbank error '{e}' occurred")
+
+    return connection
 
 
 class MyClient(discord.Client):
@@ -164,6 +176,9 @@ class MyClient(discord.Client):
                 await message.author.add_roles(roles)
                 #time.sleep(10)
                 await message.author.remove_roles(roles)
+
+
+        #SQL test erstmal
 
 
         # schreibt neue Nachricht mit THATSCRINGE
