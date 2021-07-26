@@ -26,13 +26,12 @@ async def get_bank_data(self):
         users = json.load(f)
     return users
 
-def create_connection(path):
+def create_connection():
     connection = None
     try:
-        connection = sqlite3.connect(path)
+        connection = sqlite3.connect("snens.sqlite")
     except Error as e:
         print(f"The Datenbank error '{e}' occurred")
-
     return connection
 
 
@@ -179,7 +178,14 @@ class MyClient(discord.Client):
 
 
         #SQL test erstmal
+        if message.content.startswith("!ganzer Stundenplan"):
+            connection = create_connection()
+            cursor = connection.cursor()
+            sql = "SELECT * FROM stundenplan"
 
+            cursor.execute(sql)
+            for dsatz in cursor:
+                await message.channel.send("Beginn um " + str(dsatz[0]//60) +":"+ str(dsatz[0]%60) + " Ende um " +str((dsatz[1]+dsatz[0])//60) +":"+ str((dsatz[1]+dsatz[0])%60)+ " "+ str(dsatz[2])+ " "+ str(dsatz[3])+ " ")
 
         # schreibt neue Nachricht mit THATSCRINGE
         if message.content.startswith("!cringe"):
