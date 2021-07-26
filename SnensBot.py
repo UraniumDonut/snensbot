@@ -64,19 +64,46 @@ class MyClient(discord.Client):
             cursor = connection.cursor()
             sql = "SELECT * FROM stundenplan WHERE FACH='"+Fach+"'"
             cursor.execute(sql)
+            doz = ""
+            link = ""
             gendr = "Dozent: "
+            fach = ""
+            vorlesunglink = ""
             for dsatz in cursor:
                 if(dsatz[8]==1):
                     gendr = "Dozentin: "
+                doz = dsatz[7]
+                link = dsatz[6]
+                fach = dsatz[3]
+                vorlesunglink = dsatz[5]
+                break
+            kurs = "Die Vorlesungen werden [hier]("+link+") aufgezeichnet!\n```Vorlesungszeiten:"
+            zeiten = ""
+            cursor.execute(sql)
+            for dsatz in cursor:
+                switcher = {
+                    1: "Montag    ",
+                    2: "Dienstag  ",
+                    3: "Mittwoch  ",
+                    4: "Donnerstag",
+                    5: "Freitag   ",
+                    6: "Samstag   ",
+                    7: "Sonntag   ",
+                }
+                wochentag = switcher.get(dsatz[2], "bruh")
+                zeiten = zeiten + "\n"+wochentag+"\t"+ "{:02d}".format(dsatz[0]//60) +":"+ "{:02d}".format(dsatz[0]%60)+"-"+"{:02d}".format((dsatz[1]+dsatz[0])//60) +":"+ "{:02d}".format((dsatz[1]+dsatz[0])%60)+" Uhr"
+            descriptn  = kurs + zeiten + "```"
 
-            return discord.Embed(title=gendr+" Rademacher", colour=discord.Colour(0x9999),
-                                        description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/getlink/fiNUiABo68ky9hWmQLxpF2pU/) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nDienstag \t 8.00-9.30  Uhr \nMittwoch  \t9.45-11.15 Uhr \nDonnerstag\t8.00-9.30  Uhr```")
-
-
-
+            embeded=discord.Embed(title=gendr + doz, colour=discord.Colour(0x9999),
+                                 description=descriptn)
+            cursor.execute(sql)
+            embeded.set_author(name=fach, url=vorlesunglink)
             connection.close()
+            return embeded
 
-            
+
+
+
         async def etechnik():
             embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
                                      description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/public?folderID=MjYyTlZuQm5ZNVE1NVRaS3lmQlpo) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
