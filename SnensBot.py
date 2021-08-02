@@ -105,13 +105,13 @@ class MyClient(discord.Client):
 
 
         async def etechnik():
-            embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
+            '''embed_et = discord.Embed(title="Dozent: Chowanetz", colour=discord.Colour(0x9999),
                                      description="Die Vorlesungen werden [hier](https://faubox.rrze.uni-erlangen.de/public?folderID=MjYyTlZuQm5ZNVE1NVRaS3lmQlpo) aufgezeichnet!\n[Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=3253)```Vorlesungszeiten:\nMontag \t   9.45-11.15  Uhr \nDienstag  \t9.45-11.15  Uhr \nDonnerstag    11.30-13.00 Uhr```")
 
             embed_et.set_thumbnail(url="https://cdn.discordapp.com/emojis/821033652532150302.png?v=1")
             embed_et.set_author(name="Elektrotechnik",
-                                url="https://th-nuernberg.zoom.us/j/99486053126?pwd=RGluUW5JY2pWc2xiVTJ4L28zWjNpQT09")
-
+                                url="https://th-nuernberg.zoom.us/j/99486053126?pwd=RGluUW5JY2pWc2xiVTJ4L28zWjNpQT09")'''
+            embed_et = await fachEmbedMacher("ET")
             await message.channel.send(embed=embed_et)
 
         async def mathe():
@@ -127,61 +127,63 @@ class MyClient(discord.Client):
 
 
         async def physik():
-            embed_physik = discord.Embed(title="Dozent: Kottcke", colour=discord.Colour(0x9999),
+            '''embed_physik = discord.Embed(title="Dozent: Kottcke", colour=discord.Colour(0x9999),
                                          description="Es wird nicht aufgezeichnet, aber es werden im [Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=9357) die Mitschriften hochgeladen.\n```Vorlesungszeit:\nMontag 11.30-13.00 Uhr```")
 
             embed_physik.set_thumbnail(url="https://cdn.discordapp.com/attachments/848661221661999114/851393878421929994/unknown.png")
             embed_physik.set_author(name="Physik",
-                                    url="https://th-nuernberg.zoom.us/j/6012092945?pwd=VjNOWStQLzYzcjdGRFRpMnFQTGlmQT09")
-
+                                    url="https://th-nuernberg.zoom.us/j/6012092945?pwd=VjNOWStQLzYzcjdGRFRpMnFQTGlmQT09")'''
+            embed_physik = await fachEmbedMacher("Physik")
             await message.channel.send(embed=embed_physik)
 
         async def et_uebung():
-            embed_et_uebung = discord.Embed(title="Dozent: Pfleger", colour=discord.Colour(0x9999),
+            '''embed_et_uebung = discord.Embed(title="Dozent: Pfleger", colour=discord.Colour(0x9999),
                                             description="Es wird nicht aufgezeichnet und nichts hochgeladen.\nLösungsbilder sind im Discord Channel \"et-übung\"\n```Vorlesungszeiten:\nDienstag   11.30-13.00 Uhr\nDonnerstag 14.00-15.30 Uhr\nDonnerstag 15.45-17.15 Uhr```")
 
             embed_et_uebung.set_thumbnail(url="https://cdn.discordapp.com/emojis/823867396904976384.png?v=1")
             embed_et_uebung.set_author(name="ET Übung",
-                                       url="https://th-nuernberg.zoom.us/j/91315110443?pwd=Vno0U0pCNlBUM2thWHloQ2RFK1Rudz09")
-
+                                       url="https://th-nuernberg.zoom.us/j/91315110443?pwd=Vno0U0pCNlBUM2thWHloQ2RFK1Rudz09")'''
+            embed_et_uebung = await fachEmbedMacher("et_uebung")
             await message.channel.send(embed=embed_et_uebung)
 
         async def mathe_uebung():
-            embed_mathe_uebung = discord.Embed(title="Dozentin: Schöning", colour=discord.Colour(0x9999),
+            '''embed_mathe_uebung = discord.Embed(title="Dozentin: Schöning", colour=discord.Colour(0x9999),
                                                description="Es wird nichts aufgezeichnet oder hochgeladen.\nLösungsbilder sind im Discord Channel \"mathe-übung\"\n```Vorlesungszeit:\nMontag   14.10-15.40 Uhr```")
 
             embed_mathe_uebung.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
             embed_mathe_uebung.set_author(name="Mathe Übung",
-                                          url="https://th-nuernberg.zoom.us/j/99033427466?pwd=Z1NCa2dzeEtNTm1INi9wZW5JOHFmUT09")
-
+                                          url="https://th-nuernberg.zoom.us/j/99033427466?pwd=Z1NCa2dzeEtNTm1INi9wZW5JOHFmUT09")'''
+            embed_mathe_uebung = await fachEmbedMacher("mathe_uebung")
             await message.channel.send(embed=embed_mathe_uebung)
 
         async def informatik1():
-            embed_info = discord.Embed(title="Dozent: Paulus", colour=discord.Colour(0x9999),
+            '''embed_info = discord.Embed(title="Dozent: Paulus", colour=discord.Colour(0x9999),
                                        description="Es wird nichts aufgezeichnet oder hochgeladen.\nIm [Moodlekurs](https://elearning.ohmportal.de/course/view.php?id=6859) gibt es seine Folien und Videos des letzten Semesters.\n```Vorlesungszeit:\nDonnerstag   9.45-11.15 Uhr```")
 
             embed_info.set_thumbnail(url="https://cdn.discordapp.com/emojis/844547075982622760.png")
             embed_info.set_author(name="Informatik 1 Vorlesung",
-                                  url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fteam%2F19%3Aed5f4361d551456cb85f43341b6d23aa%40thread.tacv2%2Fconversations%3FgroupId%3D8e3d7b27-c1d1-4dd9-abd3-27947fe4086e%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=team&deeplinkId=a793f997-1a68-4068-8de7-f4f7074f0e90&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")
-
+                                  url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fteam%2F19%3Aed5f4361d551456cb85f43341b6d23aa%40thread.tacv2%2Fconversations%3FgroupId%3D8e3d7b27-c1d1-4dd9-abd3-27947fe4086e%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=team&deeplinkId=a793f997-1a68-4068-8de7-f4f7074f0e90&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")'''
+            embed_info = await fachEmbedMacher("info")
             await message.channel.send(embed=embed_info)
 
         async def mathe_tutorium():
-            embed_mathe_t = discord.Embed(title="von Larissa", colour=discord.Colour(0x9999),
+            '''embed_mathe_t = discord.Embed(title="von Larissa", colour=discord.Colour(0x9999),
                                            description="Mitschriften sind in Teams\n```Vorlesungszeit:\nMittwoch   8.00-9.45 Uhr```")
 
             embed_mathe_t.set_author(name="Mathe Tutorium",
                                       url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3A48c9ec6c739d4bdf95894e4951d0c237%40thread.tacv2%2FAllgemein%3FgroupId%3D7d9c6fd6-6d97-44f9-9076-3f93ad5da095%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=channel&deeplinkId=51e21896-6373-4705-a270-9f0fce6e7b55&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")
-
+'''
+            embed_mathe_t = await fachEmbedMacher("mathe_tutorium")
             await message.channel.send(embed=embed_mathe_t)
 
         async def et_tutorium():
-            embed_et_t = discord.Embed(title="von Dominik", colour=discord.Colour(0x9999),
+            '''embed_et_t = discord.Embed(title="von Dominik", colour=discord.Colour(0x9999),
                                        description="```Vorlesungszeit:\nFreitag   8.00-9.45 Uhr```")
 
             embed_et_t.set_author(name="ET Tutorium",
                                   url="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3A56aadede9c1b426bbea1b146cd349468%40thread.tacv2%2FAllgemein%3FgroupId%3D0f474a03-379f-4a14-9966-1ef19b5f9a45%26tenantId%3Dff180ccd-a30e-43e7-b99c-b9412b24395a&type=channel&deeplinkId=983cbd58-f252-4c46-9506-f76c0ca8da0e&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true")
-
+'''
+            embed_et_t = await fachEmbedMacher("et_tutorium")
             await message.channel.send(embed=embed_et_t)
 
         # Gibt die Fächerembeds aus, Wenn !Fach "spezielles Fach" eingegeben wird
