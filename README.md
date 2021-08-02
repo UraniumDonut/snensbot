@@ -17,6 +17,7 @@ Main ist nicht zum experimentieren! Da hängen Krankenhäuser dran!
 !e: economy  
     ..payday
     ..balance
+    ..coin
 !Fach <fach>: Infos zu Fächern  
 !now: Jetziges Fach
 !link: Luschtiger Link
