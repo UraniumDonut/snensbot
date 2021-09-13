@@ -1,0 +1,3 @@
+[submodule "nahrungs-parser"]
+	path = nahrungs-parser
+	url = https://github.com/UraniumDonut/nahrungs-parser
