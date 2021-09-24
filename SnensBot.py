@@ -8,7 +8,7 @@ import asyncio
 import aioschedule as schedule
 import sqlite3
 from sqlite3 import Error
-
+import subprocess
 
 path = os.getcwd()
 print(path)
@@ -383,6 +383,9 @@ class MyClient(discord.Client):
                 else:
                     spe_link = mess[2]
 
+        if message.content.startswith("!kantine"):
+            command = "cd nahrungs-parser;python nahrungsparser.py"
+            print(os.popen("""python .\nahrungs-parser\nahrungsparser.py """).read())
 #====================================================================================================================================================================================================
 
         # economy part
